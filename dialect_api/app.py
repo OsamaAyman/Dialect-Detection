@@ -1,0 +1,1 @@
+from dialect_detection.router import app
