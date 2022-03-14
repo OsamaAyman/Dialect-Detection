@@ -26,7 +26,7 @@ class Model():
 
 
         self.__dl_model_path = os.path.join(
-            self.__models_path, 'lstm_bi')
+            self.__models_path, 'lstm_bi.h5')
 
         self.__dl_tokenizer_path = os.path.join(
             self.__models_path, 'tokenizer.joblib')
@@ -37,9 +37,9 @@ class Model():
 
         if os.path.exists(self.__dl_model_path) and os.path.exists(self.__dl_tokenizer_path) and\
                 os.path.exists(self.__dl_encoder_path):
-            self.dl_model = tf.keras.models.load_model('dialect_api/models/lstm_bi')
-            self.tokin = joblib.load('dialect_api/models/tokenizer.joblib')
-            self.labelencoder = joblib.load('dialect_api/models/LabelEncoder.joblib')
+            self.dl_model = tf.keras.models.load_model(self.__dl_model_path)
+            self.tokin = joblib.load(self.__dl_tokenizer_path)
+            self.labelencoder = joblib.load(self.__dl_encoder_path)
 
         else:
             self.dl_model = None
